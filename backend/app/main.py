@@ -1,9 +1,10 @@
 from fastapi import FastAPI
+from app.routers import home
 
-app = FastAPI()
+app = FastAPI(
+    title = "Civica API",
+    description = "AI- powered civic issue reporting platform",
+    version = "1.0.0"
+)
 
-@app.get("/")
-def home():
-    return {
-        "message": "Welcome to Civica Backend"
-    }
+app.include_router(home.router)
